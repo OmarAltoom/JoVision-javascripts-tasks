@@ -1,6 +1,7 @@
 let b = document.getElementById("b");b.addEventListener("click",req);
-function req(){
-    let fetchh = fetch("https://api.ipify.org");
-    fetchh.then(d => b.textContent = d.text());
+async function req(){
     
+    let a = await fetch("https://api.ipify.org");
+        let ip = await a.text();
+        b.textContent = ip;
 }
