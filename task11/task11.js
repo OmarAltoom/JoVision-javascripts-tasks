@@ -1,8 +1,11 @@
 let b = document.getElementById("b");b.addEventListener("click",req);
 async function req(){
     try{
-    let a = await fetch("https://api.ipify.or");
-        let ip = await a.text();
+    let req = await fetch("https://api.ipify.or");
+    if(!req.ok){
+        throw new Error("Failed");
+    }
+        let ip = await req.text();
         b.textContent = ip;
     } catch(error){
         window.alert(error);
